@@ -1,8 +1,25 @@
-# React + Vite
+# Quizzical Trivia App
+## Scrimba Solo Project (React)
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+### [Live Version](https://rapidisimo.github.io/Quizzical/)
 
-Currently, two official plugins are available:
+## My Objectives
+Initial Objectives: Build a working React quizz app that makes use of an API.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Requirements
+1. Two Screens (Start & Questions)
+2. Pull 5 questions from the OTDB API
+3. Tally correct answers after "Check Answers" is clicked
+4. Styled & Polished
+
+## Additional Work Beyond Requirements
+TBA
+
+### Question/Challenges
+TBA
+
+### Update
+
+
+## Preview
+![App-Preview](./preview.png)
