@@ -1,22 +1,35 @@
 import React from "react"
-
+import {decode} from 'html-entities';
+import Challenge from "./Challenge";
 
 export default function Quizz() {
 
-    const [questions, setQuestions] = React.useState('');
+    const [trivia, setTrivia] = React.useState([]);
 
     React.useEffect( () => {
         console.log('useEffect Ran')
-        fetch('https://opentdb.com/api.php?amount=5&type=multiple')
+        fetch('https://opentdb.com/api.php?amount=5&category=18&type=multiple')
             .then( (res) => res.json() )
-            .then( (data) => setQuestions(data))
+            .then( (data) => setTrivia(data.results))
     },[])
 
-    console.log(questions.results[0].question)
+
+    const groupOfQuestions = trivia.map( details => {
+        // Using html-entities package to decode characters
+        const decodedChar = decode(details.question);
+        return(
+            <Challenge 
+                question={decodedChar}
+                key={decodedChar}
+            />
+        )
+    })
+
 
     return(
         <main>
             <h2>Quizz Placeholder</h2>
+            {groupOfQuestions}
         </main>
     )
 }

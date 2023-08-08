@@ -39,6 +39,21 @@ body {
 /* Start Button Intro END */
 
 
+/* Challenge.jsx */
+
+.question-group h3,
+.question-group p {
+  margin-bottom: 1em;
+}
+
+.question-group h3 {
+  margin-top: .7em;
+}
+
+
+/* Challenge.jsx END*/
+
+
 
 @media (prefers-color-scheme: light) {
   :root {
