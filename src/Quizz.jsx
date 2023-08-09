@@ -13,14 +13,30 @@ export default function Quizz() {
             .then( (data) => setTrivia(data.results))
     },[])
 
+    function randomIndex(num) {
+        return Math.floor(Math.random() * num)
+    }
+
 
     const groupOfQuestions = trivia.map( details => {
         // Using html-entities package to decode characters
         const decodedChar = decode(details.question);
+        console.log(details)
+        let allAnswers = [];
+        const incAnswers = details.incorrect_answers;
+        const corrAnswer = details.correct_answer;
+        allAnswers.push(...incAnswers)
+        allAnswers.splice(randomIndex(allAnswers.length), 0, corrAnswer)
+        // console.log(randomIndex(allAnswers.length))
+        // console.log(allAnswers.length)
+        console.log(allAnswers)
         return(
             <Challenge 
-                question={decodedChar}
                 key={decodedChar}
+                question={decodedChar}
+                incorrectAnswers={details.incorrect_answers}
+                correctAnswer={details.correct_answer}
+                choices={allAnswers}
             />
         )
     })

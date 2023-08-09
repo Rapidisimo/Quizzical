@@ -50,6 +50,9 @@ body {
   margin-top: .7em;
 }
 
+.choices {
+  color: purple;
+}
 
 /* Challenge.jsx END*/
 
