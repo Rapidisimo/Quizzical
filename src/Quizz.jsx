@@ -19,17 +19,16 @@ export default function Quizz() {
 
 
     const groupOfQuestions = trivia.map( details => {
-        // Using html-entities package to decode characters
+        // Using html-entities package to decode characters through decode() method
         const decodedChar = decode(details.question);
-        console.log(details)
+        console.log(details) //TMP
         let allAnswers = [];
-        const incAnswers = details.incorrect_answers;
-        const corrAnswer = details.correct_answer;
+        const nonDecodedIncAnswers = details.incorrect_answers;
+        const incAnswers = nonDecodedIncAnswers.map( data => (decode(data)))
+        const corrAnswer = decode(details.correct_answer);
         allAnswers.push(...incAnswers)
         allAnswers.splice(randomIndex(allAnswers.length), 0, corrAnswer)
-        // console.log(randomIndex(allAnswers.length))
-        // console.log(allAnswers.length)
-        console.log(allAnswers)
+        console.log(allAnswers) //TMP
         return(
             <Challenge 
                 key={decodedChar}

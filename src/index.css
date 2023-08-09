@@ -50,9 +50,22 @@ body {
   margin-top: .7em;
 }
 
-.choices {
+.choices { /* TMP */
   color: purple;
 }
+
+.answer-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .6em;
+  justify-content: space-between;
+}
+
+fieldset {
+  padding: .4em;
+  border: none;
+}
+
 
 /* Challenge.jsx END*/
 
