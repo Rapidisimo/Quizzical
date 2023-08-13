@@ -17,6 +17,8 @@ export default function Quizz() {
         return Math.floor(Math.random() * num)
     }
 
+    //Store user selected answer
+    const [selectedAnswers, setSelectedAnswers] = React.useState([])
 
     const groupOfQuestions = trivia.map( details => {
         // Using html-entities package to decode characters through decode() method
@@ -33,13 +35,13 @@ export default function Quizz() {
             <Challenge 
                 key={decodedChar}
                 question={decodedChar}
-                incorrectAnswers={details.incorrect_answers}
-                correctAnswer={details.correct_answer}
+                incorrectAnswers={incAnswers} //Needed?
+                correctAnswer={corrAnswer}
                 choices={allAnswers}
+                setSelectedAnswers={setSelectedAnswers}
             />
         )
     })
-
 
     return(
         <main>
