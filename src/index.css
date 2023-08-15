@@ -50,8 +50,12 @@ body {
   margin-top: .7em;
 }
 
-.choices { /* TMP */
-  color: purple;
+.correct-answer { /* TMP */
+  background-color: green;
+}
+
+.incorrect-answer {
+  background-color: red;
 }
 
 .answer-list {

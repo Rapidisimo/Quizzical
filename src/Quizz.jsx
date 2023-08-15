@@ -45,12 +45,12 @@ export default function Quizz() {
                 setTriviaData={setTrivia}
                 question={details.question}
                 choices={details.allAnswers}
-                answerChoice={answerChoice}
+                recordAnswer={recordAnswer}
             />
         )
     })
 
-    function answerChoice(e) {
+    function recordAnswer(e) {
         const question = e.target.name
         const userChoice = e.target.value
         setTrivia(prevData => prevData.map( questionData => {
@@ -63,10 +63,25 @@ export default function Quizz() {
         console.log(trivia)
     }
 
+    function checkAnswers() {
+        console.log('CheckAnswers Initiated')
+        setTrivia(prevData => prevData.map( data => {
+            if(data.correct_answer === data.userAnswer) {
+                return{...data, choseCorrectly: true}
+            }else if(data.userAnswer === '') {
+                return {...data}
+            }else {
+                return {...data, choseCorrectly: false}
+            }
+        }))
+        console.log(trivia)
+    }
+
     return(
         <main>
             <h2>Quizz Placeholder</h2>
             {groupOfQuestions}
+            <button onClick={checkAnswers}>Check Answers</button>
         </main>
     )
 }

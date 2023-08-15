@@ -1,12 +1,15 @@
 
-export default function Challenge({triviaData, setTriviaData, question, choices, answerChoice}) {
+export default function Challenge({triviaData, setTriviaData, question, choices, recordAnswer}) {
  
 
     const answerOptions = choices.map( (data, index) => {
+
+        const answerColor = '';
+
         return(
-            <div className="single-question" key={index}>
-                <input type="radio" value={data} className="radio-element" name={question} onClick={answerChoice} />
-                <label htmlFor={data}>{data}</label>
+            <div key={index}>
+                <input type="radio" value={data} className="radio-element" name={question} onClick={recordAnswer} />
+                <label htmlFor={data} className="answer-bkg">{data}</label>
             </div>
         )
     })
