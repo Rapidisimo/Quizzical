@@ -11,7 +11,7 @@ export default function Quizz() {
         fetch('https://opentdb.com/api.php?amount=5&category=18&type=multiple')
             .then( (res) => res.json() )
             .then( (data) => {
-                const updateTrivia = data.results.map( (item) => {
+                const updateTrivia = data.results.map( (item, index) => {
                     const decodedQuestion = decode(item.question)
                     const decodedCorrAnswer = decode(item.correct_answer)
                     const decodedIncAnswers = item.incorrect_answers.map( details => (decode(details)))
@@ -24,7 +24,8 @@ export default function Quizz() {
                         correct_answer: decodedCorrAnswer,
                         incorrect_answers: decodedIncAnswers,
                         allAnswers: allAnswers,
-                        userAnswer: ''
+                        userAnswer: '',
+                        id: index
                     }
                 })
                 setTrivia(updateTrivia)
@@ -36,41 +37,36 @@ export default function Quizz() {
         return Math.floor(Math.random() * num)
     }
 
-    // const groupOfQuestions = trivia.map( details => {
-    //     // Using html-entities package to decode characters through decode() method
-    //     const decodedChar = decode(details.question);
-    //     console.log(details) //TMP
-    //     let allAnswers = [];
-    //     const nonDecodedIncAnswers = details.incorrect_answers;
-    //     const incAnswers = nonDecodedIncAnswers.map( data => (decode(data)))
-    //     const corrAnswer = decode(details.correct_answer);
-    //     allAnswers.push(...incAnswers)
-    //     allAnswers.splice(randomIndex(allAnswers.length), 0, corrAnswer)
-    //     console.log(allAnswers) //TMP
-    //     return(
-    //         <Challenge 
-    //             key={decodedChar}
-    //             question={decodedChar}
-    //             incorrectAnswers={incAnswers} //Needed?
-    //             correctAnswer={corrAnswer}
-    //             choices={allAnswers}
-    //             setSelectedAnswers={setSelectedAnswers}
-    //         />
-    //     )
-    // })
+    const groupOfQuestions = trivia.map( (details, index) => {
+        return(
+            <Challenge
+                key={index}
+                triviaData={trivia}
+                setTriviaData={setTrivia}
+                question={details.question}
+                choices={details.allAnswers}
+                answerChoice={answerChoice}
+            />
+        )
+    })
 
-    // const groupOfQuestions = console.log(trivia)
-    
-    // setTrivia(prevData => {
-    //     return {...prevData, testing: "OKAY"}
-    // })
-
-    const testy = console.log(trivia)
+    function answerChoice(e) {
+        const question = e.target.name
+        const userChoice = e.target.value
+        setTrivia(prevData => prevData.map( questionData => {
+                  if(questionData.question === question) {
+                    return{...questionData, userAnswer: userChoice}
+                  }else {
+                    return {...questionData}
+                  }
+        }))
+        console.log(trivia)
+    }
 
     return(
         <main>
             <h2>Quizz Placeholder</h2>
-            {testy}
+            {groupOfQuestions}
         </main>
     )
 }

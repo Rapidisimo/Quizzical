@@ -1,26 +1,21 @@
-import React from "react"
-// import {decode} from 'html-entities';
 
-export default function Challenge({question, correctAnswer, incorrectAnswers, choices, setSelectAnswers}) {
+export default function Challenge({triviaData, setTriviaData, question, choices, answerChoice}) {
+ 
 
-    function handleClick(e) {
-        console.log(e.target.value)
-    }
-    console.log(question)
-    const answerOption = choices.map( (data) => {
+    const answerOptions = choices.map( (data, index) => {
         return(
-            <div className="singl-question" key={data}>
-                <input type="radio" value={data} name={question} className="radio-element" onClick={handleClick} />
+            <div className="single-question" key={index}>
+                <input type="radio" value={data} className="radio-element" name={question} onClick={answerChoice} />
                 <label htmlFor={data}>{data}</label>
             </div>
-            )
+        )
     })
 
     return (
         <div className="question-group">
             <h3>{question}</h3>
             <fieldset className="answer-list">
-                {answerOption}
+                {answerOptions}
             </fieldset>
         </div>
     )
