@@ -3,10 +3,10 @@ import React from "react"
 
 export default function Challenge({question, correctAnswer, incorrectAnswers, choices, setSelectAnswers}) {
 
-    function handleClick() {
-        console.log('Hello')
+    function handleClick(e) {
+        console.log(e.target.value)
     }
-
+    console.log(question)
     const answerOption = choices.map( (data) => {
         return(
             <div className="singl-question" key={data}>
