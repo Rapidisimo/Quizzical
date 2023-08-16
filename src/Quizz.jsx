@@ -7,7 +7,7 @@ export default function Quizz() {
     const [trivia, setTrivia] = React.useState([]);
 
     React.useEffect( () => {
-        console.log('useEffect Ran')
+        // console.log('useEffect Ran')
         fetch('https://opentdb.com/api.php?amount=5&category=18&type=multiple')
             .then( (res) => res.json() )
             .then( (data) => {
@@ -31,7 +31,7 @@ export default function Quizz() {
                 setTrivia(updateTrivia)
             })
     },[])
-    console.log(trivia)
+    // console.log(trivia)
 
     function randomIndex(num) {
         return Math.floor(Math.random() * num)
@@ -41,11 +41,13 @@ export default function Quizz() {
         return(
             <Challenge
                 key={index}
-                triviaData={trivia}
-                setTriviaData={setTrivia}
-                question={details.question}
-                choices={details.allAnswers}
+                questionData={details}
+                // trivia={trivia}
+                // setTrivia={setTrivia}
+                // question={details.question}
+                // choices={details.allAnswers}
                 recordAnswer={recordAnswer}
+                // answered={details.choseCorrectly}
             />
         )
     })
@@ -60,11 +62,11 @@ export default function Quizz() {
                     return {...questionData}
                   }
         }))
-        console.log(trivia)
+        // console.log(trivia)
     }
 
     function checkAnswers() {
-        console.log('CheckAnswers Initiated')
+        // console.log('CheckAnswers Initiated')
         setTrivia(prevData => prevData.map( data => {
             if(data.correct_answer === data.userAnswer) {
                 return{...data, choseCorrectly: true}
@@ -74,7 +76,7 @@ export default function Quizz() {
                 return {...data, choseCorrectly: false}
             }
         }))
-        console.log(trivia)
+        // console.log(trivia)
     }
 
     return(
