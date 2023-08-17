@@ -42,12 +42,7 @@ export default function Quizz() {
             <Challenge
                 key={index}
                 questionData={details}
-                // trivia={trivia}
-                // setTrivia={setTrivia}
-                // question={details.question}
-                // choices={details.allAnswers}
                 recordAnswer={recordAnswer}
-                // answered={details.choseCorrectly}
             />
         )
     })
@@ -66,8 +61,12 @@ export default function Quizz() {
     }
 
     function checkAnswers() {
+        setTrivia(prevData => prevData.map( data => {
+            return{...data, finished: true}
+        }))
         // console.log('CheckAnswers Initiated')
         setTrivia(prevData => prevData.map( data => {
+
             if(data.correct_answer === data.userAnswer) {
                 return{...data, choseCorrectly: true}
             }else if(data.userAnswer === '') {
@@ -77,8 +76,10 @@ export default function Quizz() {
             }
         }))
         // console.log(trivia)
+        // console.log(test)
     }
-
+    
+    console.log(trivia)
     return(
         <main>
             <h2>Quizz Placeholder</h2>

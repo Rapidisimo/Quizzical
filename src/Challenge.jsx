@@ -1,10 +1,10 @@
 
 export default function Challenge({questionData, recordAnswer}) {
 
-    const {question, allAnswers} = questionData
+    const {question, allAnswers, choseCorrectly, userAnswer, correct_answer} = questionData
 
     const answerOptions = allAnswers.map( (data, index) => {
-
+        const test = choseCorrectly ? (userAnswer === correct_answer ? "correct-answer" : "") : ""
         return(
             <div key={index}>
                 <input 
@@ -13,7 +13,7 @@ export default function Challenge({questionData, recordAnswer}) {
                     className="radio-element" 
                     name={question} 
                     onClick={recordAnswer} />
-                <label htmlFor={data}>{data}</label>
+                <label htmlFor={data} className={test}>{data}</label>
             </div>
         )
     })
