@@ -31,7 +31,6 @@ export default function Quizz() {
                 setTrivia(updateTrivia)
             })
     },[])
-    // console.log(trivia)
 
     function randomIndex(num) {
         return Math.floor(Math.random() * num)
@@ -57,7 +56,6 @@ export default function Quizz() {
                     return {...questionData}
                   }
         }))
-        // console.log(trivia)
     }
 
     function checkAnswers() {
@@ -75,8 +73,6 @@ export default function Quizz() {
                 return {...data, choseCorrectly: false}
             }
         }))
-        // console.log(trivia)
-        // console.log(test)
     }
     
     console.log(trivia)
