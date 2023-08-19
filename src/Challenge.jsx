@@ -6,7 +6,7 @@ export default function Challenge({questionData, recordAnswer}) {
     
 
     const answerOptions = allAnswers.map( (data, index) => {
-        const answerColor = finished ? (data === correct_answer && data === userAnswer ? "correct-answer" : "") : "";
+        const answerColor = finished ? (data === correct_answer && data === userAnswer ? "correct-answer" : (data !== correct_answer && data === userAnswer ? "incorrect-answer" : "")) : "";
         return(
             <div key={index}>
                 <input 
