@@ -13,7 +13,8 @@ export default function Challenge({questionData, recordAnswer}) {
                     type="radio" 
                     value={data} 
                     className="radio-element" 
-                    name={question} 
+                    name={question}
+                    id={data}
                     onClick={recordAnswer} />
                 <label htmlFor={data} className={answerColor}>{data}</label>
             </div>
