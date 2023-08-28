@@ -2,13 +2,14 @@ import React from "react"
 import {decode} from 'html-entities';
 import Challenge from "./Challenge";
 
-export default function Quizz() {
+export default function Quizz({apiSettings}) {
 
+    const {amount, category, type} = apiSettings
     const [trivia, setTrivia] = React.useState([]);
 
     React.useEffect( () => {
         // console.log('useEffect Ran')
-        fetch('https://opentdb.com/api.php?amount=5&category=18&type=multiple')
+        fetch(`https://opentdb.com/api.php?amount=${amount}&category=${category}&type=${type}`)
             .then( (res) => res.json() )
             .then( (data) => {
                 const updateTrivia = data.results.map( (item, index) => {
