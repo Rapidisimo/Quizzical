@@ -9,6 +9,7 @@ function App() {
     setIntro(!intro)
   }
 
+  // Default Quiz settings in case none are chosen
   const [apiSettings, setApiSettings] = React.useState({
     amount: 5,
     category: 18,
