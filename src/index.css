@@ -70,8 +70,25 @@ fieldset {
   border: none;
 }
 
-.tmp {
-  color: blue;
+input[type="radio"] {
+    -webkit-appearance: none;
+    appearance: none;
+    /* For iOS < 15 to remove gradient background */
+    background-color: #fff;
+    /* Not removed via appearance */
+    margin: 0;
+}
+
+input:checked + label {
+  border: 1px dashed #293264;
+  opacity: .85;
+}
+
+.answer-list label {
+  border: 1px solid #293264;
+  border-radius: 7.71px;
+  padding: .2em .35em;
+  cursor: pointer;
 }
 
 /* Challenge.jsx END*/
