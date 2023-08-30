@@ -80,7 +80,7 @@ export default function Quizz({apiSettings}) {
     return(
         <main>
             {groupOfQuestions}
-            <button onClick={checkAnswers}>Check Answers</button>
+            <button className="quiz-page-btn" onClick={checkAnswers}>Check Answers</button>
         </main>
     )
 }

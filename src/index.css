@@ -1,5 +1,5 @@
 :root {
-  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  font-family: 'Inter', sans-serif;
   line-height: 1.5;
   font-weight: 400;
 
@@ -12,6 +12,14 @@ body {
   min-height: 100vh;
   font-size: 16px;
   background-color: #F5F7FB;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  font-family: 'Karla', sans-serif;
+  font-weight: 700;
 }
 
 .wrapper {
@@ -43,7 +51,8 @@ body {
   text-align: center;
 }
 
-.intro button {
+.intro button,
+.quiz-page-btn {
   cursor: pointer;
   margin: 1em auto;
   background-color: #4D5B9E;
@@ -52,6 +61,12 @@ body {
   border-radius: 15px;
   width: 200px;
   height: 50px;
+  font-weight: 500;
+}
+
+main {
+  display: flex;
+  flex-direction: column;
 }
 
 .quiz-options {
@@ -69,10 +84,18 @@ body {
   padding: .3em;
 }
 
-/* Start Button Intro END */
+.quiz-page-btn {
+  margin: 2em auto;
+}
 
 
 /* Challenge.jsx */
+
+.question-group {
+  border-bottom: 1px solid #DBDEF0;
+  padding-bottom: 1em;
+  margin-top: .4em;
+}
 
 .question-group h3,
 .question-group p {
@@ -84,11 +107,12 @@ body {
 }
 
 .correct-answer { /* TMP */
-  background-color: green;
+  background-color: #94D7A2;
 }
 
 .incorrect-answer {
-  background-color: red;
+  background-color: #F8BCBC;
+  opacity: .95;
 }
 
 .answer-list {
@@ -113,15 +137,17 @@ input[type="radio"] {
 }
 
 input:checked + label {
-  border: 1px dashed #293264;
-  opacity: .85;
+  border: 1px solid transparent;
+  background-color: #D6DBF5;
 }
 
 .answer-list label {
   border: 1px solid #293264;
   border-radius: 7.71px;
-  padding: .2em .35em;
+  padding: .3em .6em;
   cursor: pointer;
+  font-size: .9em;
+  font-weight: 500;
 }
 
 /* Challenge.jsx END*/
