@@ -5,7 +5,6 @@ export default function Challenge({questionData, recordAnswer}) {
 
     const answerOptions = allAnswers.map( (data, index) => {
         const answerColor = finished ? (data === correct_answer ? "correct-answer" : (data !== correct_answer && data === userAnswer ? "incorrect-answer" : (data !== correct_answer && data !== userAnswer ? "answer-not-chosen" : ""))) : "";
-        // const answerColor = finished ? (data === correct_answer && data === userAnswer ? "correct-answer" : (data !== correct_answer && data === userAnswer ? "incorrect-answer" : "")) : "";
         return(
             <div key={index}>
                 <input 
@@ -15,6 +14,7 @@ export default function Challenge({questionData, recordAnswer}) {
                     name={question}
                     id={data}
                     onClick={recordAnswer}
+                    disabled={finished ? true : false}
                 />
                 <label htmlFor={data} className={answerColor}>{data}</label>
             </div>
