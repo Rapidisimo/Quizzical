@@ -4,7 +4,7 @@ export default function Challenge({questionData, recordAnswer}) {
     const {question, allAnswers, choseCorrectly, userAnswer, correct_answer, finished} = questionData
 
     const answerOptions = allAnswers.map( (data, index) => {
-        const answerColor = finished ? (data === correct_answer ? "correct-answer" : (data !== correct_answer && data === userAnswer ? "incorrect-answer" : "")) : "";
+        const answerColor = finished ? (data === correct_answer ? "correct-answer" : (data !== correct_answer && data === userAnswer ? "incorrect-answer" : (data !== correct_answer && data !== userAnswer ? "answer-not-chosen" : ""))) : "";
         // const answerColor = finished ? (data === correct_answer && data === userAnswer ? "correct-answer" : (data !== correct_answer && data === userAnswer ? "incorrect-answer" : "")) : "";
         return(
             <div key={index}>
@@ -14,7 +14,8 @@ export default function Challenge({questionData, recordAnswer}) {
                     className="radio-element" 
                     name={question}
                     id={data}
-                    onClick={recordAnswer} />
+                    onClick={recordAnswer}
+                />
                 <label htmlFor={data} className={answerColor}>{data}</label>
             </div>
         )

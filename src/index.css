@@ -106,15 +106,6 @@ main {
   margin-top: .7em;
 }
 
-.correct-answer { /* TMP */
-  background-color: #94D7A2;
-}
-
-.incorrect-answer {
-  background-color: #F8BCBC;
-  opacity: .95;
-}
-
 .answer-list {
   display: flex;
   flex-wrap: wrap;
@@ -150,8 +141,28 @@ input:checked + label {
   font-weight: 500;
 }
 
+.answer-color {
+  border: 1px solid #293264;
+}
+
 /* Challenge.jsx END*/
 
+/* Finished Quiz */
+.answer-list .correct-answer {
+  background-color: #94D7A2;
+  border: none;
+}
+
+.answer-list .incorrect-answer {
+  background-color: #F8BCBC;
+  border: none;
+  opacity: .6;
+}
+
+.answer-list .answer-not-chosen {
+  opacity: .6;
+  border: 1px solid #293264;
+}
 
 
 @media (prefers-color-scheme: light) {
