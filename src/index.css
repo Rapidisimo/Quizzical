@@ -11,31 +11,64 @@
 body {
   min-height: 100vh;
   font-size: 16px;
+  background-color: #F5F7FB;
 }
 
 .wrapper {
-  background-color: sandybrown;
+  background-color: #F5F7FB;
   min-height: 100dvh;
   max-width: 550px;
   margin: 0 auto;
   padding: 1em;
+  border: 1px solid gray;
+  border-radius: 5px;
+  background-image: url(./bkg.svg);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
 }
 
 /* Start Button Intro */
 .intro {
-  border: 1px solid green;
-  height: 50vh;
+  /* border: 1px solid green; */
+  /* height: 50vh; */
   display: flex;
   flex-direction: column;
+  /* text-align: center; */
+  /* justify-content: space-evenly; */
+}
+
+.intro h1,
+.intro h2 {
   text-align: center;
-  justify-content: space-evenly;
 }
 
 .intro button {
   cursor: pointer;
-  max-width: 32.5vw;
-  margin: 0 auto;
+  margin: 1em auto;
+  background-color: #4D5B9E;
+  color: #fff;
+  border: none;
+  border-radius: 15px;
+  width: 200px;
+  height: 50px;
 }
+
+.quiz-options {
+  display: grid;
+  gap: .4em;
+  padding: 1em;
+}
+
+.quiz-options label {
+  margin-top: .8em;
+  font-weight: bold;
+}
+
+.quiz-options select {
+  padding: .3em;
+}
+
 /* Start Button Intro END */
 
 

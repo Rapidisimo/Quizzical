@@ -48,21 +48,24 @@ export default function Intro({handleIntro, apiSettings, setApiSettings}) {
   }
 
     return (
-        <div className="intro">
+      <div className="intro">
         <h1>Quizzical</h1>
         <h2>A fun trivia App!</h2>
-        <label htmlFor="categories">Choose a Category:</label>
-        <select name="categories" id="categories" onChange={setupApi}>
-          <option value="">--Please choose an option--</option>
-          {selectOptions}
-        </select>
-        <select name="difficulty" id="difficulty" onChange={setupApi}>
-          <option value="">--Please choose an option--</option>
-          {selectDifficulty}
-        </select>
-        <label htmlFor="numQuestions">Number of Questions: {apiSettings.amount}</label>
-        <input type="range" id="numQuestions" min={1} max={5} defaultValue={apiSettings.amount} step={1} onMouseUp={setupApi} />
-        <button onClick={handleIntro}>START!</button>
+        <div className="quiz-options">
+          <label htmlFor="categories">Category</label>
+          <select name="categories" id="categories" onChange={setupApi}>
+            <option value="">Please choose an option</option>
+            {selectOptions}
+          </select>
+          <label htmlFor="difficulty">Difficulty</label>
+          <select name="difficulty" id="difficulty" onChange={setupApi}>
+            <option value="">Please choose an option</option>
+            {selectDifficulty}
+          </select>
+          <label htmlFor="numQuestions">Number of Questions: {apiSettings.amount}</label>
+          <input type="range" id="numQuestions" min={1} max={5} defaultValue={apiSettings.amount} step={1} onMouseUp={setupApi} />
+          <button onClick={handleIntro}>Start Quiz!</button>
+        </div>
       </div>
 
     )

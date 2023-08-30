@@ -79,7 +79,6 @@ export default function Quizz({apiSettings}) {
     console.log(trivia)
     return(
         <main>
-            <h2>Quizz Placeholder</h2>
             {groupOfQuestions}
             <button onClick={checkAnswers}>Check Answers</button>
         </main>
