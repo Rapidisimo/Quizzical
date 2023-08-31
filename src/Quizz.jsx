@@ -67,7 +67,7 @@ export default function Quizz({apiSettings}) {
             if(details.finished){
                 setQuizResults(prevData => ({...prevData, displayResults: true}))
             }
-            
+
             if(details.finished && details.choseCorrectly) {
                 setQuizResults(prevData => ({...prevData, correct: prevData.correct + 1}))
             }else if(details.finished && !details.choseCorrectly) {
@@ -99,12 +99,16 @@ export default function Quizz({apiSettings}) {
     React.useEffect( () => {
         console.log(quizResults)
     },[quizResults])
+
+
     
     return(
         <main>
             {groupOfQuestions}
-            {quizResults.displayResults ? <h3>Game Finished</h3> : ""}
-            <button className="quiz-page-btn" onClick={checkAnswers}>Check Answers</button>
+            <div className="results">
+                {quizResults.displayResults ? <h3>You scored {quizResults.correct}/{trivia.length} correct answers!</h3> : ""}
+                <button className="quiz-page-btn" onClick={checkAnswers}>Check Answers</button>
+            </div>
         </main>
     )
 }

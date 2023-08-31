@@ -164,6 +164,13 @@ input:checked + label {
   border: 1px solid #293264;
 }
 
+.results {
+  display: flex;
+  flex-direction: column;
+  margin-top: 1em;
+  text-align: center;
+}
+
 
 @media (prefers-color-scheme: light) {
   :root {
