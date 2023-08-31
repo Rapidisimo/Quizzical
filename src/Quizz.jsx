@@ -62,8 +62,12 @@ export default function Quizz({apiSettings}) {
     const [quizResults, setQuizResults] = React.useState({correct: 0, incorrect: 0, displayResults: false})
 
     const results = () => {
-        setQuizResults(prevData => ({...prevData, displayResults: true}))
+        
         trivia.map( details => {
+            if(details.finished){
+                setQuizResults(prevData => ({...prevData, displayResults: true}))
+            }
+            
             if(details.finished && details.choseCorrectly) {
                 setQuizResults(prevData => ({...prevData, correct: prevData.correct + 1}))
             }else if(details.finished && !details.choseCorrectly) {
