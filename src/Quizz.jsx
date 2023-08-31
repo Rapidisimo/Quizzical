@@ -59,13 +59,25 @@ export default function Quizz({apiSettings}) {
         }))
     }
 
+    const [quizResults, setQuizResults] = React.useState({correct: 0, incorrect: 0, displayResults: false})
+
+    const results = () => {
+        setQuizResults(prevData => ({...prevData, displayResults: true}))
+        trivia.map( details => {
+            if(details.finished && details.choseCorrectly) {
+                setQuizResults(prevData => ({...prevData, correct: prevData.correct + 1}))
+            }else if(details.finished && !details.choseCorrectly) {
+                setQuizResults(prevData => ({...prevData, incorrect: prevData.incorrect + 1}))
+            }
+        })
+    }
+
     function checkAnswers() {
         setTrivia(prevData => prevData.map( data => {
             return{...data, finished: true}
         }))
-        // console.log('CheckAnswers Initiated')
-        setTrivia(prevData => prevData.map( data => {
 
+        setTrivia(prevData => prevData.map( data => {
             if(data.correct_answer === data.userAnswer) {
                 return{...data, choseCorrectly: true}
             }else if(data.userAnswer === '') {
@@ -75,11 +87,19 @@ export default function Quizz({apiSettings}) {
             }
         }))
     }
+
+    React.useEffect( () => {
+        results()
+    },[trivia])
+
+    React.useEffect( () => {
+        console.log(quizResults)
+    },[quizResults])
     
-    console.log(trivia)
     return(
         <main>
             {groupOfQuestions}
+            {quizResults.displayResults ? <h3>Game Finished</h3> : ""}
             <button className="quiz-page-btn" onClick={checkAnswers}>Check Answers</button>
         </main>
     )
