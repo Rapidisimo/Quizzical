@@ -2,13 +2,12 @@ import React from "react"
 import {decode} from 'html-entities';
 import Challenge from "./Challenge";
 
-export default function Quizz({apiSettings}) {
+export default function Quizz({apiSettings, setIntro}) {
 
     const {amount, category, type} = apiSettings
     const [trivia, setTrivia] = React.useState([]);
 
     React.useEffect( () => {
-        // console.log('useEffect Ran')
         fetch(`https://opentdb.com/api.php?amount=${amount}&category=${category}&type=${type}`)
             .then( (res) => res.json() )
             .then( (data) => {
@@ -96,10 +95,19 @@ export default function Quizz({apiSettings}) {
         results()
     },[trivia])
 
-    React.useEffect( () => {
-        console.log(quizResults)
-    },[quizResults])
+    // React.useEffect( () => {
+    //     console.log(quizResults)
+    // },[quizResults])
 
+    function startAgain() {
+        setIntro(true)
+    }
+
+    function displayButton() {
+        if(quizResults.displayResults) {
+            return(<button className="quiz-page-btn" onClick={startAgain}>Start Again</button>)
+        }else {return(<button className="quiz-page-btn" onClick={checkAnswers}>Check Answers</button>)}
+    }
 
     
     return(
@@ -107,7 +115,7 @@ export default function Quizz({apiSettings}) {
             {groupOfQuestions}
             <div className="results">
                 {quizResults.displayResults ? <h3>You scored {quizResults.correct}/{trivia.length} correct answers!</h3> : ""}
-                <button className="quiz-page-btn" onClick={checkAnswers}>Check Answers</button>
+                {displayButton()}
             </div>
         </main>
     )

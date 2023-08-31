@@ -20,7 +20,7 @@ function App() {
   return (
     <div className="wrapper">
       {intro ? <Intro handleIntro={handleIntro} apiSettings={apiSettings} setApiSettings={setApiSettings}/> : ""}
-      {!intro ? <Quizz apiSettings={apiSettings}/> : ""}
+      {!intro ? <Quizz setIntro={setIntro} apiSettings={apiSettings}/> : ""}
     </div>
   )
 }
