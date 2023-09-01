@@ -30,7 +30,7 @@ h4 {
   padding: 1em;
   border: 1px solid gray;
   border-radius: 5px;
-  background-image: url(./bkg.svg);
+  background-image: url(/bkg.svg);
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
