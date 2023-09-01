@@ -24,7 +24,7 @@ export default function Quizz({apiSettings, setIntro}) {
                         correct_answer: decodedCorrAnswer,
                         incorrect_answers: decodedIncAnswers,
                         allAnswers: allAnswers,
-                        userAnswer: '',
+                        userAnswer: false,
                         id: index
                     }
                 })
@@ -75,14 +75,18 @@ export default function Quizz({apiSettings, setIntro}) {
         })
     }
 
-    function checkAnswers() {
 
-        const hasMissingAnswer = trivia.some(data => data.userAnswer === '');
-        if(hasMissingAnswer) {
-            console.log('Please answer all questions')
-            return
+
+    const [missingAnswer, setMissingAnswer] = React.useState(false)
+
+    function checkAnswers() {
+        const verify = trivia.some(data => data.userAnswer === false);
+        if(verify) {
+            setMissingAnswer(true);
+            return;
         }
 
+        setMissingAnswer(false)
         setTrivia(prevData => prevData.map( data =>({...data, finished: true})))
 
         setTrivia(prevData => prevData.map( data => {
@@ -100,9 +104,6 @@ export default function Quizz({apiSettings, setIntro}) {
         results()
     },[trivia])
 
-    // React.useEffect( () => {
-    //     console.log(quizResults)
-    // },[quizResults])
 
     function startAgain() {
         setIntro(true)
@@ -113,12 +114,13 @@ export default function Quizz({apiSettings, setIntro}) {
             return(<button className="quiz-page-btn" onClick={startAgain}>Start Again</button>)
         }else {return(<button className="quiz-page-btn" onClick={checkAnswers}>Check Answers</button>)}
     }
-
+    console.log(trivia)
     
     return(
         <main>
             {groupOfQuestions}
             <div className="results">
+                {missingAnswer ? <h3 className="missing-answers">Please answer all questions!</h3> : ""}
                 {quizResults.displayResults ? <h3>You scored {quizResults.correct}/{trivia.length} correct answers!</h3> : ""}
                 {displayButton()}
             </div>

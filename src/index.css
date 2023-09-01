@@ -88,6 +88,9 @@ main {
   margin: 2em auto;
 }
 
+.missing-answers {
+  color: rgb(228, 10, 10);
+}
 
 /* Challenge.jsx */
 
