@@ -13,6 +13,7 @@ export default function Challenge({questionData, recordAnswer}) {
                     className="radio-element" 
                     name={question}
                     id={data}
+                    
                     onClick={recordAnswer}
                     disabled={finished ? true : false}
                 />

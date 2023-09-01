@@ -76,9 +76,14 @@ export default function Quizz({apiSettings, setIntro}) {
     }
 
     function checkAnswers() {
-        setTrivia(prevData => prevData.map( data => {
-            return{...data, finished: true}
-        }))
+
+        const hasMissingAnswer = trivia.some(data => data.userAnswer === '');
+        if(hasMissingAnswer) {
+            console.log('Please answer all questions')
+            return
+        }
+
+        setTrivia(prevData => prevData.map( data =>({...data, finished: true})))
 
         setTrivia(prevData => prevData.map( data => {
             if(data.correct_answer === data.userAnswer) {
