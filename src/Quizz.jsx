@@ -1,6 +1,7 @@
 import React from "react"
 import {decode} from 'html-entities';
 import Challenge from "./Challenge";
+import Confetti from 'react-confetti'
 
 export default function Quizz({apiSettings, setIntro}) {
 
@@ -118,6 +119,7 @@ export default function Quizz({apiSettings, setIntro}) {
     
     return(
         <main>
+            {quizResults.correct === trivia.length ? <Confetti /> : ""}
             {groupOfQuestions}
             <div className="results">
                 {missingAnswer ? <h3 className="missing-answers">Please answer all questions!</h3> : ""}
