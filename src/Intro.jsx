@@ -63,7 +63,7 @@ export default function Intro({handleIntro, apiSettings, setApiSettings}) {
             {selectDifficulty}
           </select>
           <label htmlFor="numQuestions">Number of Questions: {apiSettings.amount}</label>
-          <input type="range" id="numQuestions" min={1} max={5} defaultValue={apiSettings.amount} step={1} onMouseUp={setupApi} />
+          <input type="range" id="numQuestions" min={1} max={5} defaultValue={apiSettings.amount} step={1} onChange={setupApi} />
           <button onClick={handleIntro}>Start Quiz!</button>
         </div>
       </div>
