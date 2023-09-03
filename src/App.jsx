@@ -3,19 +3,23 @@ import Intro from "./Intro"
 import Quizz from "./Quizz"
 
 function App() {
-
+  // true: Show Intro page | false: Show Quiz page
   const [intro, setIntro] = React.useState(true)
-  const handleIntro = () =>{
-    setIntro(!intro)
-  }
 
-  // Default Quiz settings in case none are chosen
-  const [apiSettings, setApiSettings] = React.useState({
+  // Default Quiz API fetch settings in case none are chosen
+  const [apiSettings, setApiSettings] = React.useState(
+    {
     amount: 5,
     category: 18,
     type: 'multiple',
     difficulty: 'easy'
-  })
+   }
+  )
+
+  // function to update State when starting Quiz to show Quiz page
+  const handleIntro = () =>{
+    setIntro(!intro)
+  }
 
   return (
     <div className="wrapper">

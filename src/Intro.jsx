@@ -2,8 +2,10 @@ import React from "react"
 
 export default function Intro({handleIntro, apiSettings, setApiSettings}) {
 
+  // State to track Categories
   const [quizCategories, setquizCategories] = React.useState([])
 
+  // API call to retrieve Categories
   React.useEffect( () => {
     fetch('https://opentdb.com/api_category.php')
       .then( resp => resp.json() )
@@ -12,19 +14,23 @@ export default function Intro({handleIntro, apiSettings, setApiSettings}) {
       })
   },[])
 
+  // Generate Options for Categories dropdown
   const selectOptions = quizCategories.map( details => {
     return(
       <option value={details.id} key={details.id}>{details.name}</option>
     )
   })
 
+  // Manually provided Difficulty level choices
   const lvlOptions = ['easy', 'medium', 'hard']
+  // Generate Optsions for Difficulty dropdown
   const selectDifficulty = lvlOptions.map( (details, index) => {
     return(
       <option value={details} key={index}>{details}</option>
     )
   })
 
+  // function to setup State properties to use once API is called based on user choices
   function setupApi(e) {
     if(e.target.id === 'categories') {
       console.log('Option Selected')
