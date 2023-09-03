@@ -36,9 +36,7 @@ export default function Quizz({apiSettings, setIntro}) {
                     }
                 })
                 setTrivia(updateTrivia)
-                setTimeout( () => {
-                    setLoadingData(false)
-                },1000)
+                setLoadingData(false)
             })
     },[])
 
