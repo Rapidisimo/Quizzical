@@ -2,14 +2,19 @@ import React from "react"
 import {decode} from 'html-entities';
 import Challenge from "./Challenge";
 import Confetti from 'react-confetti'
+import ClipLoader from "react-spinners/ClipLoader";
+
 
 export default function Quizz({apiSettings, setIntro}) {
 
     const {amount, category, type} = apiSettings
     // State to track Quiz data
     const [trivia, setTrivia] = React.useState([]);
+    // To display a loader while loading data
+    const [loadingData, setLoadingData] = React.useState(false)
 
     React.useEffect( () => {
+        setLoadingData(true)
         fetch(`https://opentdb.com/api.php?amount=${amount}&category=${category}&type=${type}`)
             .then( (res) => res.json() )
             .then( (data) => {
@@ -31,8 +36,24 @@ export default function Quizz({apiSettings, setIntro}) {
                     }
                 })
                 setTrivia(updateTrivia)
+                setTimeout( () => {
+                    setLoadingData(false)
+                },1000)
             })
     },[])
+
+    // Spinner Loader while getting API data to display the Quiz
+    function dataLoader() {
+        return (
+            <ClipLoader
+            color={"#4D5B9E"}
+            loading={loadingData}
+            size={150}
+            aria-label="Loading Spinner"
+            data-testid="loader"
+            />
+          )
+      }
 
     // Random number generator for randomly entering answer into an array
     function randomIndex(num) {
@@ -128,13 +149,19 @@ export default function Quizz({apiSettings, setIntro}) {
     
     return(
         <main>
-            {quizResults.correct === trivia.length ? <Confetti /> : ""}
-            {groupOfQuestions}
-            <div className="results">
-                {missingAnswer ? <h3 className="missing-answers">Please answer all questions!</h3> : ""}
-                {quizResults.displayResults ? <h3>You scored {quizResults.correct}/{trivia.length} correct answers!</h3> : ""}
-                {displayButton()}
-            </div>
+            {loadingData ?             
+            <div className="loader">{dataLoader()}</div>
+                : 
+            <>
+                {quizResults.correct === trivia.length ? <Confetti /> : ""}
+                {groupOfQuestions}
+                <div className="results">
+                    {missingAnswer ? <h3 className="missing-answers">Please answer all questions!</h3> : ""}
+                    {quizResults.displayResults ? <h3>You got {quizResults.correct} out of {trivia.length} questions correct!</h3> : ""}
+                    {displayButton()}
+                </div>
+            </>
+            }
         </main>
     )
 }

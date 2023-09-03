@@ -70,6 +70,13 @@ main {
   flex-direction: column;
 }
 
+.loader {
+  display: grid;
+  align-self: center;
+  place-content: center;
+  height: 100dvh;
+}
+
 .quiz-options {
   display: grid;
   gap: .4em;
