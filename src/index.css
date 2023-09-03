@@ -198,4 +198,26 @@ input:checked + label {
   color: #fff;
   border: none;
 }
+
+input:checked + label {
+  border: 1px solid transparent;
+  background-color: #6a77b8;
+}
+
+.missing-answers {
+  color: #EFB3B3;
+  text-decoration: 2px solid #f8e7e7 underline;
+}
+
+.answer-list .incorrect-answer,
+.answer-list .correct-answer {
+  color: #212121;
+}
+
+.answer-list .answer-not-chosen {
+  color: #fff;
+  opacity: .9;
+  border: 1px dashed #293264;
+}
+
 }
