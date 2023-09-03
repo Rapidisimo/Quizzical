@@ -4,7 +4,8 @@
 ### [Live Version](https://rapidisimo.github.io/Quizzical/)
 
 ## My Objectives
-Initial Objectives: Build a working React quizz app that makes use of an API.
+Build a working React quiz app that makes use of an API.
+Always keep in mind the user experience they have with the app.
 
 ## Requirements
 1. ✅ Two Screens (Start & Questions)
@@ -17,7 +18,9 @@ Initial Objectives: Build a working React quizz app that makes use of an API.
 2. ⭐️ Ability to choose Category
 3. ⭐️ Ability to choose Difficulty
 4. ⭐️ Ability to choose Number of Questions (I limited it to 5 Max)
-6. ⭐️ Verify that all questions have been answered before running check and display message for the user
+5. ⭐️ Verify that all questions have been answered before running check and display message for the user
+6. ⭐️ Loading animation while/if the data from the API takes a bit to display.
+7. ⭐️ Dark color scheme based on system/user preference
 
 ### Challenges
 - Dealing with asynchronous nature of State and getting comfortable with useEffect
@@ -27,4 +30,7 @@ Initial Objectives: Build a working React quizz app that makes use of an API.
 - Mobile first approach
 
 ## Preview
-![App-Preview](./preview.png)
+![App-Preview](./preview-1.jpg)
+![App-Preview](./preview-2.jpg)
+![App-Preview](./preview-3.jpg)
+![App-Preview](./preview-4.jpg)
