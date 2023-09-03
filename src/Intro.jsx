@@ -25,9 +25,15 @@ export default function Intro({handleIntro, apiSettings, setApiSettings}) {
   const lvlOptions = ['easy', 'medium', 'hard']
   // Generate Optsions for Difficulty dropdown
   const selectDifficulty = lvlOptions.map( (details, index) => {
-    return(
-      <option value={details} key={index}>{details}</option>
-    )
+    if(details === 'easy') {
+      return(
+        <option value={details} key={index} selected>{details}</option>
+      )  
+    }else {
+      return(
+        <option value={details} key={index}>{details}</option>
+      )  
+    }
   })
 
   // function to setup State properties to use once API is called based on user choices
@@ -65,7 +71,6 @@ export default function Intro({handleIntro, apiSettings, setApiSettings}) {
           </select>
           <label htmlFor="difficulty">Difficulty</label>
           <select name="difficulty" id="difficulty" onChange={setupApi}>
-            <option value="">Please choose an option</option>
             {selectDifficulty}
           </select>
           <label htmlFor="numQuestions">Number of Questions: {apiSettings.amount}</label>
