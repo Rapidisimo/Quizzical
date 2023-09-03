@@ -30,7 +30,7 @@ Always keep in mind the user experience they have with the app.
 - Mobile first approach
 
 ## Preview
-![App-Preview](./preview-1.jpg)
-![App-Preview](./preview-2.jpg)
-![App-Preview](./preview-3.jpg)
-![App-Preview](./preview-4.jpg)
+<img src="./preview-1.jpg" height="50%" width="100%" alt="screenshot of Quizzical App running on a phone browser">
+<img src="./preview-2.jpg" height="50%" width="100%" alt="screenshot of Quizzical App running on a phone browser">
+<img src="./preview-3.jpg" height="50%" width="100%" alt="screenshot of Quizzical App running on a phone browser">
+<img src="./preview-4.jpg" height="50%" width="100%" alt="screenshot of Quizzical App running on a phone browser">
