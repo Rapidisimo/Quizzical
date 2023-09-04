@@ -22,12 +22,12 @@ h4 {
   max-width: 550px;
   margin: 0 auto;
   padding: 1em;
-  border: 1px solid gray;
+  border: 1px solid rgb(194, 194, 194);
   border-radius: 5px;
-  background-image: url(/bkg.svg);
-  background-size: cover;
+  background-image: url(/top-bkg-min.svg), url(/bottom-bkg-min.svg);
+  background-size: 25%;
   background-repeat: no-repeat;
-  background-position: center;
+  background-position: right top, left bottom;
 }
 
 /* Start Button Intro */
@@ -181,7 +181,7 @@ input:checked + label {
   .wrapper {
     background-color: #4a4a4a;
     border: 1px solid gray;
-    background-image: url(/bkg-drk.svg);
+    background-size: 12%;
   }
 
   a:hover {
